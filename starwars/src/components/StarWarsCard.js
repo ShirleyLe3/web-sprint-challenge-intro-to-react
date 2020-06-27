@@ -1,4 +1,3 @@
-// Write your Character component here
 import React from 'react';
 import axios from 'axios';
 import StarWarsFilms from './StarWarsFilm';
@@ -6,9 +5,25 @@ import styled from 'styled-components';
 
 
 
+const CardContainer = styled.div
+        `background-color: pink;
+        border: 1px solid white;
+        width: 300px;
+        height: 350px;
+        border-radius: 10px;
+        margin: 10px;`
+
+
+
+function StarWarsCard(props) {
+    const name = props.dataSets.name
+    const gender = props.dataSets.gender
+    const birthYear = props.dataSets.birth_year
+    const films = props.dataSets.films
     
-    let Character = []
-    movie.map(items => {
+    
+    let movie = []
+    films.map(items => {
         
         return(
             axios.get(`${items}`)
@@ -26,15 +41,10 @@ import styled from 'styled-components';
                     <StarWarsFilms film={movie} />
                     <CardContainer>
                         <h2>{name}</h2>
-                        <p>Gender: {gender}</p>
-                        <p>Birth Year: {birthYear}</p>
-                        <p>Eye Color: {props.dataSets.eye_color}</p>
-                        <p>Hair Color: {props.dataSets.hair_color}</p>>
-                        <p>Skin Color: {props.dataSets.skin_color}</p>>
                     </CardContainer>
                 </div>  
     )
 }
 
 
-export default Character;
+export default StarWarsCard;
