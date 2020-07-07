@@ -6,10 +6,10 @@ import styled from 'styled-components';
 
 
 const CardContainer = styled.div
-        `background-color: pink;
+        `background-color: coral;
         border: 1px solid white;
-        width: 300px;
-        height: 350px;
+        width: 600px;
+        height: 60px;
         border-radius: 10px;
         margin: 10px;`
 
@@ -41,10 +41,13 @@ function StarWarsCard(props) {
                     <StarWarsFilms film={movie} />
                     <CardContainer>
                         <h2>{name}</h2>
-                    </CardContainer>
+                        <h6>{birthYear}</h6>
+                    </CardContainer>    
                 </div>  
     )
 }
 
+
+// create div with details, set height: 0  visibility:hidden,  button height:(300px),  visibility: visible   transition(css) height   duration (in styled-components), toggled button to change back,      
 
 export default StarWarsCard;

@@ -3,17 +3,9 @@ import axios from 'axios';
 import './App.css';
 import StarWarsCard from './components/StarWarsCard';
 import styled from 'styled-components';
-import {Button} from '@material-ui/core';
+// import {Button} from '@material-ui/core';
+import { render } from 'react-dom';
 
-const MainContainer = styled.div
-      `text-align: center;
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      align-items: center;`
-const MainHeader = styled.h1
-      `color: pink;`
-      // text-shadow: #fff;`
 
 
 
@@ -36,16 +28,24 @@ const App = () => {
   }
 
   useEffect( () => {
-    axios.get(`https://swapi.dev/`)
+    axios.get(`https://swapi.dev/api/people`)
     .then(res => {
       console.log("dataset", res.data.results);
       setCharData(res.data.results);
-
+      //return res.json();
+    //.then(data => {
+    //  this.setState({
+    //    starwarsChars:data.results,
+    //    nextPage: data.next,
+    //    previousPage: data.previous
+    //  });
     })
     .catch(error => {
       console.log(error)
     })
-  }, [page])
+  }, [page]);
+
+
 
 
 
@@ -53,9 +53,8 @@ const App = () => {
   return (
     <div className="App">
       <MainContainer>
-        <MainHeader>React Wars</MainHeader>
-        <Button onClick={() => changePage(-1)} disabled={page <=1}> {'Prev'}</Button>
-        <Button onClick={() => changePage(+1)} disabled={page <=1}> {'Next'}</Button>
+        <MainHeader><h1>Star Wars</h1></MainHeader>
+
         <div className="cards">
             {
               charData.map(items => {
@@ -64,7 +63,9 @@ const App = () => {
                 )
               })
             }
-        </div>    
+        </div>   
+        <button onClick={() => changePage(-1)} enabled={page <=1}> {'Prev'}</button>
+        <button onClick={() => changePage(+1)} enabled={page <=1}> {'Next'}</button> 
       </MainContainer>
       
     </div>
@@ -72,6 +73,19 @@ const App = () => {
 }
 
 
+
+// styled-components
+
+const MainContainer = styled.div
+      `text-align: center;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;`
+const MainHeader = styled.h1
+      `color: #B85C3C;
+      text-shadow: 12px 6px darkgrey;
+      font-style: italic bold 12px/30px Georgia, serif;`
 
 
 
