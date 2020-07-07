@@ -41,7 +41,7 @@ function StarWarsCard(props) {
                     <StarWarsFilms film={movie} />
                     <CardContainer>
                         <h2>{name}</h2>
-                        <h6>{birthYear}</h6>
+                        <h6>Birth year: {birthYear}</h6>
                     </CardContainer>    
                 </div>  
     )
